@@ -1,0 +1,29 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+wrapper.o: wrapper.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+file_sys.o: file_sys.c file_sys.h lib.h types.h keyboard.h multiboot.h \
+  x86_desc.h i8259.h debug.h IDT.h RTC.h PIT.h multiprocess.h Paging.h \
+  terminal.h syscalls.h
+i8259.o: i8259.c i8259.h multiboot.h types.h x86_desc.h lib.h debug.h \
+  IDT.h keyboard.h RTC.h terminal.h multiprocess.h Paging.h PIT.h
+IDT.o: IDT.c IDT.h multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  keyboard.h RTC.h terminal.h multiprocess.h Paging.h PIT.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  IDT.h keyboard.h RTC.h terminal.h multiprocess.h Paging.h PIT.h \
+  file_sys.h syscalls.h
+keyboard.o: keyboard.c keyboard.h multiboot.h types.h x86_desc.h lib.h \
+  i8259.h debug.h IDT.h RTC.h PIT.h multiprocess.h Paging.h terminal.h
+lib.o: lib.c lib.h types.h
+multiprocess.o: multiprocess.c multiprocess.h Paging.h lib.h types.h \
+  keyboard.h multiboot.h x86_desc.h i8259.h debug.h IDT.h RTC.h PIT.h \
+  terminal.h
+Paging.o: Paging.c Paging.h lib.h types.h x86_desc.h
+PIT.o: PIT.c PIT.h i8259.h multiboot.h types.h x86_desc.h lib.h debug.h \
+  IDT.h keyboard.h RTC.h terminal.h multiprocess.h Paging.h
+RTC.o: RTC.c RTC.h multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  IDT.h keyboard.h terminal.h multiprocess.h Paging.h PIT.h
+syscalls.o: syscalls.c syscalls.h multiboot.h types.h x86_desc.h lib.h \
+  i8259.h debug.h IDT.h keyboard.h RTC.h terminal.h multiprocess.h \
+  Paging.h PIT.h file_sys.h
+terminal.o: terminal.c terminal.h lib.h types.h keyboard.h multiboot.h \
+  x86_desc.h i8259.h debug.h IDT.h RTC.h PIT.h multiprocess.h Paging.h
